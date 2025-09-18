@@ -19,20 +19,37 @@
             <hr>
             <a href="profissionais.html"><span class="material-symbols-outlined">clinical_notes</span>Profissionais</a>
             <hr>
-            <a href="relatorios.html"><span class="material-symbols-outlined"></span>Relatórios</a>
+            <a href="relatorios.html"><span class="material-symbols-outlined">analytics</span>Relatórios</a>
             <hr>
-            <a href="notificacao.html"><span class="material-symbols-outlined"></span>Notificações</a>
+            <a href="notificacao.html"><span class="material-symbols-outlined">notifications</span>Notificações</a>
             <hr>
-            <button><span class="material-symbols-outlined"></span>switch-theme</button>
-            <button><span class="material-symbols-outlined"></span>config</button>
-            <a href="sair.html"><span class="material-symbols-outlined"></span>Sair</a>
+            <button id="theme"><span class="material-symbols-outlined">dark_mode</span></button>
+            <button id="settings"><span class="material-symbols-outlined">settings</span></button>
+            <button id="leave"><span class="material-symbols-outlined">exit_to_app</span></button>
         
         </aside>
         <main   >
             <header>
                 <h1>Bem vindo de volta...</h1>
             </header>
-            <section id="agenda">Agenda</section>
+            <section id="agenda">
+                <h2>Agenda</h2>
+                <h3 id="month">...</h3>
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span class="material-symbols-outlined">arrow_forward</span>
+                <div>
+                    <ul id="weekdays">
+                        <li>Dom</li>
+                        <li>Seg</li>
+                        <li>Ter</li>
+                        <li>Qua</li>
+                        <li>Qui</li>
+                        <li>Sex</li>
+                        <li>Sab</li>
+                    </ul>
+                </div>
+            </section>
+            <div class="info-container">
             <section>
                 <h2>Próximo agendamento</h2>
                 <div class="info">
@@ -45,6 +62,7 @@
                     Seção de +info
                 </div>
             </section>
+            </div>
         </main>
     </div>
 </body>

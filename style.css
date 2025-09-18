@@ -46,6 +46,7 @@
     grid-column: 2 / 3;
     display: grid;
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
     gap : 20px;
     background-color: var(--bg-color);
     padding: 20px;
@@ -54,10 +55,10 @@
     }
 
     main h1{
-        grid-column: 1 / -1; /* ocupa as duas colunas do grid */
-        grid:row: 1 / 2;
-        text-align: center;
-        margin-bottom: 20px;
+    grid-column: 1 / -1; /* ocupa as duas colunas */
+    grid-row: 1 / 2;     /* fica na primeira linha */
+    text-align: center;
+    margin-bottom: 20px;
 
     }
 
@@ -65,13 +66,29 @@
         grid-row: 2/3;
         grid-column: 1/2;
         display: flex;
-        align-self: center;
-        justify-self: flex-end;
+        align-self: flex-start;
+        justify-self: flex-start;
         gap: 10px;
-        width: 350px;
-        height: 250px;
+        border_radius: 8px;
         background-color: var(--itens-color);
     }
+
+    ul#weekdays{
+       list-style: none;
+       display: flex;
+       gap: 10px;
+       padding: 5px;
+       font:bold 1.3em Arial, sans-serif;
+    }
+
+    div.info-container{
+        grid-column: 2/3;
+        grid-row: 2/3;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
 
     .info{
         grid-column: 2/3;
@@ -82,4 +99,18 @@
         background-color: var(--itens-color);
         padding: 10px;
         border-radius: 8px;
+    }
+
+    button#theme, button#settings, button#leave{
+       all: unset;
+       display: flex;
+         align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        font-size: 6em;
+        border: 1px solid black;
+    }
+    span.material-symbols-outlined{
+        color: var(--title-color);  
     }
