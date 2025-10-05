@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
 * {
   margin: 0px;
@@ -137,7 +137,7 @@ button#leave {
 button#theme span,
 button#settings span,
 button#leave span {
-  font-size: 24px; 
+  font-size: 24px;
 }
 
 span.material-symbols-outlined {
