@@ -22,7 +22,7 @@ function SideBar() {
 
       <hr />
 
-      <div className="side-buttons">
+      <div id="side-buttons">
         <button id="theme">
           <span className="material-symbols-outlined">dark_mode</span>
         </button>
