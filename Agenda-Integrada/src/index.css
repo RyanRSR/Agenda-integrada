@@ -9,9 +9,10 @@
 :root {
   --bg-color: hsl(0 0% 100%);
   --itens-color: hsl(0 0% 85%);
-  --main-color: hsl(71, 47% 41%);
+  --main-color: hsl(71 47% 41%);
   --title-color: hsl(0 0% 0%);
-  --dtext-color: hsl(0 0% 20%);
+  --dtext-color: hsla(0, 0%, 20%, 0.67);
+  --hover-color: hsl(0 0% 40%);
 }
 
 div#container {
@@ -39,7 +40,7 @@ div#container {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--dtext-color);
+  color: var(--title-color);
   padding: 10px 15px;
   border-radius: 8px;
   transition: background-color 0.2s, color 0.2s;
@@ -76,24 +77,65 @@ main h1 {
   margin-bottom: 20px;
 }
 
-#agenda {
-  grid-row: 2 / 3;
+/*Agenda*/
+div.calendar-container {
   grid-column: 1 / 2;
+  max-width:870px;
+  max-height: 600px;
   display: flex;
-  align-self: flex-start;
-  justify-self: flex-start;
-  gap: 10px;
+  flex-direction: column;
+  background-color: var(--itens-color );
   border-radius: 8px;
-  background-color: var(--itens-color);
 }
 
-ul#weekdays {
-  list-style: none;
-  display: flex;
-  gap: 10px;
-  padding: 5px;
-  font: bold 1.3em Arial, sans-serif;
+div.calendar-header{
+  display : flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
 }
+
+.calendar-header button{
+  all: unset;
+}
+.calendar-header button span{
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--main-color);
+  padding: 10px;}
+
+div.calendar-grid{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto;
+  gap: 15px;
+  padding: 20px;
+  justify-items: center;
+  text-align: center;
+  font: 500 2em 'Arial', sans-serif;
+}
+
+div.calendar-grid .weekday{
+  color: var(--dtext-color);
+}
+
+div.calendar-grid .day{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.calendar-grid .day:hover{
+  background-color:var(--hover-color); 
+  background-size: 50px;
+}
+
 
 div.info-container {
   grid-column: 2 / 3;

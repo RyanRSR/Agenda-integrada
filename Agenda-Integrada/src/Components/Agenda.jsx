@@ -66,7 +66,7 @@ function Agenda() {
             currentYear === today.getFullYear();
 
           return (
-            <div
+            <div 
               key={index}
               className={`day ${isToday ? "today" : ""}`}
             >
