@@ -1,5 +1,6 @@
 import Agenda from "./Agenda";
 import InfoBox from "./InfoBox";
+import NvAgendamento from "./NvAgendamento";
 function ContCent({ name }) {
   return (
     <main>
@@ -13,6 +14,7 @@ function ContCent({ name }) {
         <InfoBox title="Prox-Agendamento" content="Seção-prox" />
         <InfoBox title="Mais-info" content="info" />
       </div>
+      <div className ="Agendar"><NvAgendamento/></div>
     </main>
   );
 }

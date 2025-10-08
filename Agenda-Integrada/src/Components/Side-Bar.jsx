@@ -1,5 +1,8 @@
-const links = [
-  { href: "user.html", icon: "account_box", label: "*Nome do usuário*" },
+
+
+function SideBar({fullname}) {
+  const links = [
+  { href: "user.html", icon: "account_box", label: `${fullname}`},
   { href: "agenda.html", icon: "calendar_month", label: "Agenda" },
   {
     href: "profissionais.html",
@@ -9,8 +12,8 @@ const links = [
   { href: "relatorios.html", icon: "analytics", label: "Relatórios" },
   { href: "notificacao.html", icon: "notifications", label: "Notificações" },
 ];
-
-function SideBar() {
+  
+  
   return (
     <aside className="side-bar">
       {links.map(({ href, icon, label }) => (
