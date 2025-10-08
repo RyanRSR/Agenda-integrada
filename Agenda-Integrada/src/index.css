@@ -10,6 +10,7 @@
   --bg-color: hsl(0 0% 100%);
   --itens-color: hsl(0 0% 85%);
   --main-color: hsl(71 47% 41%);
+  --main-color2: hsl(70 27% 60%);
   --title-color: hsl(0 0% 0%);
   --dtext-color: hsla(0, 0%, 20%, 0.5);
   --weekdays-text: hsl(0, 0%, 20%, 0.9);
@@ -170,7 +171,7 @@ div.calendar-grid .weekday {
 }
 
 .calendar-grid .today {
-  background-color: var(--main-color);
+  background-color: var(--main-color2);
   color: white;
 }
 
@@ -189,6 +190,11 @@ div.calendar-grid .day {
   background-size: 50px;
 }
 
+
+.calendar-grid .day.selected {
+  background-color: var(--main-color);
+  color: white;
+}
 /*Info*/
 
 div.info-container {
@@ -238,3 +244,47 @@ div.Agendar{
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
+/*Modal*/
+.modal{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content{
+  background-color: var(--itens-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.modal-content h3{
+  text-align: center;
+  color: var(--title-color);
+}
+
+.modal-content input{
+  padding: 8px;
+  border: 0px;
+  border-radius: 4px;
+  font-size: 1.2em;
+}
+.modal-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button{
+  all: unset;
+  flex:1;
+}
