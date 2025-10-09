@@ -15,6 +15,7 @@
   --dtext-color: hsla(0, 0%, 20%, 0.5);
   --weekdays-text: hsl(0, 0%, 20%, 0.9);
   --hover-color: hsl(0, 0%, 70%);
+  --hover-color2: hsl(0, 0%, 50%);
 }
 
 div#container {
@@ -282,9 +283,28 @@ div.Agendar{
 .modal-buttons{
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .modal-buttons button{
   all: unset;
   flex:1;
+  background-color:var(--main-color);
+  color: white;
+  padding: 10px;
+  cursor:pointer;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+}
+.modal-buttons button:hover{
+  background-color: var(--main-color2);
+}
+.modal-buttons button:last-child{
+  background-color: hsl(0, 0%, 70%);
+  color: black;
+} 
+
+.modal-buttons button:last-child:hover{
+  background-color: var(--hover-color2);
 }

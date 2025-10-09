@@ -126,7 +126,7 @@ function Agenda() {
                 ${d.isPrevMonth ? "prev-month" : ""}
                 ${selectedDate === d.day && !d.isPrevMonth ? "selected" : ""}
               `}
-              onClick={() => handleDayClick(d)}
+              onClick={if(!d.isPrevMonth){setSelectedDate(d.day);}
             >
               {d.day}
             </div>
