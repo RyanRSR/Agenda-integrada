@@ -4,7 +4,6 @@ function Agenda() {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  
 
   const monthNames = [
     "Jan",
@@ -56,8 +55,6 @@ function Agenda() {
     setCurrentYear(newYear);
   };
 
-  
-
   return (
     <div className="calendar-container">
       {/* Cabeçalho */}
@@ -99,13 +96,13 @@ function Agenda() {
               className={`day
                 ${isToday ? "today" : ""}
                 ${d.isPrevMonth ? "prev-month" : ""}
-              `}>
+              `}
+            >
               {d.day}
             </div>
           );
         })}
       </div>
-     
     </div>
   );
 }

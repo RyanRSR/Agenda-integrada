@@ -26,7 +26,6 @@ div#container {
   width: 100vw;
 }
 
-
 /*Side Bar*/
 .side-bar {
   grid-row: 1 / 2;
@@ -62,7 +61,6 @@ div#container {
   font-size: 24px;
   color: inherit;
 }
-
 
 div#side-buttons {
   display: flex;
@@ -191,7 +189,6 @@ div.calendar-grid .day {
   background-size: 50px;
 }
 
-
 .calendar-grid .day.selected {
   background-color: var(--main-color);
   color: white;
@@ -218,15 +215,14 @@ div.info-container {
 }
 
 /*Botão de Agendamento*/
-div.Agendar{
+div.Agendar {
   grid-column: 2 / 2;
   grid-row: 3 / 3;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
-.button button{
+.button button {
   all: unset;
   display: flex;
   align-items: center;
@@ -246,19 +242,19 @@ div.Agendar{
 }
 
 /*Modal*/
-.modal{
+.modal {
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.modal-content{
+.modal-content {
   background-color: var(--itens-color);
   padding: 20px;
   border-radius: 8px;
@@ -266,45 +262,44 @@ div.Agendar{
   display: flex;
   flex-direction: column;
   gap: 10px;
-
 }
 
-.modal-content h3{
+.modal-content h3 {
   text-align: center;
   color: var(--title-color);
 }
 
-.modal-content input{
+.modal-content input {
   padding: 8px;
   border: 0px;
   border-radius: 4px;
   font-size: 1.2em;
 }
-.modal-buttons{
+.modal-buttons {
   display: flex;
   justify-content: space-between;
   gap: 10px;
 }
 
-.modal-buttons button{
+.modal-buttons button {
   all: unset;
-  flex:1;
-  background-color:var(--main-color);
+  flex: 1;
+  background-color: var(--main-color);
   color: white;
   padding: 10px;
-  cursor:pointer;
+  cursor: pointer;
   border-radius: 6px;
   border: none;
   font-weight: 600;
 }
-.modal-buttons button:hover{
+.modal-buttons button:hover {
   background-color: var(--main-color2);
 }
-.modal-buttons button:last-child{
+.modal-buttons button:last-child {
   background-color: hsl(0, 0%, 70%);
   color: black;
-} 
+}
 
-.modal-buttons button:last-child:hover{
+.modal-buttons button:last-child:hover {
   background-color: var(--hover-color2);
 }

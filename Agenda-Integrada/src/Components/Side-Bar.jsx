@@ -1,19 +1,16 @@
-
-
-function SideBar({fullname}) {
+function SideBar({ fullname }) {
   const links = [
-  { href: "user.html", icon: "account_box", label: `${fullname}`},
-  { href: "agenda.html", icon: "calendar_month", label: "Agenda" },
-  {
-    href: "profissionais.html",
-    icon: "clinical_notes",
-    label: "Profissionais",
-  },
-  { href: "relatorios.html", icon: "analytics", label: "Relatórios" },
-  { href: "notificacao.html", icon: "notifications", label: "Notificações" },
-];
-  
-  
+    { href: "user.html", icon: "account_box", label: `${fullname}` },
+    { href: "agenda.html", icon: "calendar_month", label: "Agenda" },
+    {
+      href: "profissionais.html",
+      icon: "clinical_notes",
+      label: "Profissionais",
+    },
+    { href: "relatorios.html", icon: "analytics", label: "Relatórios" },
+    { href: "notificacao.html", icon: "notifications", label: "Notificações" },
+  ];
+
   return (
     <aside className="side-bar">
       {links.map(({ href, icon, label }) => (

@@ -5,9 +5,8 @@ import SideBar from "./Components/Side-Bar";
 function App() {
   return (
     <div id="container">
-      <SideBar fullname ="Ryan Rocha"/>
+      <SideBar fullname="Ryan Rocha" />
       <ContCent name="Ryan" />
-
     </div>
   );
 }
