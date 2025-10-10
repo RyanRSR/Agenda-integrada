@@ -1,11 +1,9 @@
-function NvAgendamento(){
-    const handleClick = () =>{
-        console.log("Novo Agendamento");
-    };
+function NvAgendamento({onOpenModal}){
+
 
     return(
         <div className="button">
-            <button onClick={handleClick}>Novo Agendamento</button>
+            <button onClick={onOpenModal}>Novo Agendamento</button>
         </div>
     );
 }

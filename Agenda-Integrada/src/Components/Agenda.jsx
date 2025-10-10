@@ -4,13 +4,7 @@ function Agenda() {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  const [selectedDate, setSelectedDate] = useState(null); // corrigido nome padrão
-  const [appointments, setAppointments] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newAppointment, setNewAppointment] = useState({
-    title: "",
-    time: "",
-  });
+  
 
   const monthNames = [
     "Jan",
@@ -62,26 +56,7 @@ function Agenda() {
     setCurrentYear(newYear);
   };
 
-  const handleDayClick = (day) => {
-    if (!day.isPrevMonth) {
-      setSelectedDate(day.day);
-      setIsModalOpen(true);
-    }
-  };
-
-  const handleSaveAppointment = () => {
-    if (newAppointment.title.trim() && newAppointment.time.trim()) {
-      setAppointments([
-        ...appointments,
-        {
-          date: `${selectedDate}/${currentMonth + 1}/${currentYear}`,
-          ...newAppointment,
-        },
-      ]);
-      setNewAppointment({ title: "", time: "" });
-      setIsModalOpen(false);
-    }
-  };
+  
 
   return (
     <div className="calendar-container">
@@ -124,44 +99,13 @@ function Agenda() {
               className={`day
                 ${isToday ? "today" : ""}
                 ${d.isPrevMonth ? "prev-month" : ""}
-                ${selectedDate === d.day && !d.isPrevMonth ? "selected" : ""}
-              `}
-              onClick={if(!d.isPrevMonth){setSelectedDate(d.day);}
-            >
+              `}>
               {d.day}
             </div>
           );
         })}
       </div>
-      {/*Modal Simples*/}
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <h3>
-              Novo agendamento - {selectedDate}/{currentMonth + 1}
-            </h3>
-            <input
-              type="text"
-              placeholder="Titulo do agendamento"
-              value={newAppointment.title}
-              onChange={(e) =>
-                setNewAppointment({ ...newAppointment, title: e.target.value })
-              }
-            />
-            <input
-              type="time"
-              value={newAppointment.time}
-              onChange={(e) =>
-                setNewAppointment({ ...newAppointment, time: e.target.value })
-              }
-            />
-            <div className="modal-buttons">
-              <button onClick={handleSaveAppointment}>Salvar</button>
-              <button onClick={() => setIsModalOpen(false)}>Cancelar</button>
-            </div>
-          </div>
-        </div>
-      )}
+     
     </div>
   );
 }
