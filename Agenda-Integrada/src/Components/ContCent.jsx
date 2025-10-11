@@ -103,8 +103,7 @@ function ContCent({ name }) {
         <div className="modal">
           <div className="modal-content">
             <h3>
-              Novo Agendamento em{" "}
-              {selectedDate?.toLocaleDateString("pt-BR")}
+              Novo Agendamento em {selectedDate?.toLocaleDateString("pt-BR")}
             </h3>
 
             <input
