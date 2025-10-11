@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Agenda() {
+function Agenda({ onSelectedDate, selectedDate, appointments }) {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
@@ -55,6 +55,20 @@ function Agenda() {
     setCurrentYear(newYear);
   };
 
+  const handleDayClick = (day) => {
+    if (day.isPrevMonth) return;
+    const clickedDate = new Date(currentYear, currentMonth, day.day);
+
+    if (
+      selectedDate &&
+      clickedDate.toDateString() === selectedDate.toDateString()
+    ) {
+      onSelectedDate(null);
+    } else {
+      onSelectedDate(clickedDate);
+    }
+  };
+
   return (
     <div className="calendar-container">
       {/* Cabeçalho */}
@@ -90,15 +104,29 @@ function Agenda() {
             currentMonth === today.getMonth() &&
             currentYear === today.getFullYear();
 
+          const date = new Date(currentYear, currentMonth, d.day);
+          const isSelected =
+            selectedDate && date.toDateString() === selectedDate.toDateString();
+
+          const dateKey = date.toISOString().split("T")[0];
+          const hasAppointment =
+            appointments[dateKey] && appointments[dateKey].length > 0;
+
           return (
             <div
               key={index}
               className={`day
                 ${isToday ? "today" : ""}
                 ${d.isPrevMonth ? "prev-month" : ""}
+                ${isSelected ? "selected" : ""}
+                ${hasAppointment ? "has-appointment" : ""}
               `}
+              onClick={() => handleDayClick(d)}
             >
-              {d.day}
+              <div className="day-number">
+                {d.day}
+                {hasAppointment && <div className="dot"></div>}
+              </div>
             </div>
           );
         })}

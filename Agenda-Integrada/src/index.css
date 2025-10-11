@@ -193,6 +193,20 @@ div.calendar-grid .day {
   background-color: var(--main-color);
   color: white;
 }
+.day-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
 /*Info*/
 
 div.info-container {
@@ -215,18 +229,17 @@ div.info-container {
 }
 
 /*Botão de Agendamento*/
-div.Agendar {
-  grid-column: 2 / 2;
-  grid-row: 3 / 3;
+.agendar {
+  grid-column: 2/3;
+  grid-row: 3/4;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-.button button {
+
+.agendar-btn {
   all: unset;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--main-color);
   color: white;
   font-size: 1.2em;
@@ -234,11 +247,33 @@ div.Agendar {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
-  width: 100%;
-  min-width: 161px;
-  height: 25px;
-  padding: 15px;
+  width: 300px;
+  height: 45px;
+  text-align: center;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.agendar-btn:hover:not(.disabled) {
+  background-color: var(--main-color2);
+}
+
+.agendar-btn.disabled {
+  background-color: hsl(0, 0, 75%);
+  cursor: not-allowed;
+  color: hsl(0, 0%, 40%);
+}
+
+.agendar-msg {
+  font-size: 0.9em;
+  color: gray;
+  margin-top: 6px;
+  height: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.agendar-msg.visible {
+  opacity: 1;
 }
 
 /*Modal*/
