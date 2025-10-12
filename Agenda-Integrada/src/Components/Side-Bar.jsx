@@ -1,23 +1,27 @@
+import { Link, useLocation } from "react-router-dom";
+
 function SideBar({ fullname }) {
+  const location = useLocation();
+
   const links = [
-    { href: "user.html", icon: "account_box", label: `${fullname}` },
-    { href: "agenda.html", icon: "calendar_month", label: "Agenda" },
-    {
-      href: "profissionais.html",
-      icon: "clinical_notes",
-      label: "Profissionais",
-    },
-    { href: "relatorios.html", icon: "analytics", label: "Relatórios" },
-    { href: "notificacao.html", icon: "notifications", label: "Notificações" },
+    { path: "/", icon: "account_box", label: `${fullname}` },
+    { path: "/agenda", icon: "calendar_month", label: "Agenda" },
+    { path: "/profissionais", icon: "clinical_notes", label: "Profissionais" },
+    { path: "/relatorios", icon: "analytics", label: "Relatórios" },
+    { path: "/notificacoes", icon: "notifications", label: "Notificações" },
   ];
 
   return (
     <aside className="side-bar">
-      {links.map(({ href, icon, label }) => (
-        <a href={href} key={href}>
-          <span className="material-symbols-outlined">{icon}</span>
-          {label}
-        </a>
+      {links.map((item) => (
+        <Link
+          key={item.label}
+          to={item.path}
+          className={location.pathname === item.path ? "active" : ""}
+        >
+          <span className="material-symbols-outlined">{item.icon}</span>
+          <span className="label">{item.label}</span>
+        </Link>
       ))}
 
       <hr />

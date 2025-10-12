@@ -18,6 +18,24 @@
   --hover-color2: hsl(0, 0%, 50%);
 }
 
+.dark-mode {
+  --bg-color: hsl(0 0% 10%);
+  --itens-color: hsl(0 0% 15%);
+  --title-color: hsl(0 0% 100%);
+  --dtext-color: hsla(0 0% 80% / 0.7); /* texto secundário */
+  --weekdays-text: hsla(0 0% 80% / 0.9); /* dias da semana */
+  --hover-color: hsl(50 10% 30%); /* hover de dias */
+  --hover-color2: hsl(0 0% 40%); /* hover de botões secundários */
+  --main-color: hsl(100 40% 60%); /* cor principal destaque */
+  --main-color2: hsl(100 30% 50%); /* cor hover destaque */
+}
+
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--title-color);
+}
+
 div#container {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -78,7 +96,6 @@ button#leave {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 1px solid black;
   cursor: pointer;
 }
 
@@ -265,7 +282,7 @@ div.info-container {
 
 .agendar-msg {
   font-size: 0.9em;
-  color: gray;
+  color: var(--dtext-color);
   margin-top: 6px;
   height: 18px;
   opacity: 0;
@@ -332,7 +349,7 @@ div.info-container {
 }
 .modal-buttons button:last-child {
   background-color: hsl(0, 0%, 70%);
-  color: black;
+  color: var(--title-color);
 }
 
 .modal-buttons button:last-child:hover {
