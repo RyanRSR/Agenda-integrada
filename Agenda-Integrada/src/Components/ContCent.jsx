@@ -64,7 +64,7 @@ function ContCent({ name }) {
   }, [appointments]);
 
   return (
-    <main>
+    <main className="agenda-page">
       <header>
         <h1>Bem-vindo de volta, {name}</h1>
       </header>

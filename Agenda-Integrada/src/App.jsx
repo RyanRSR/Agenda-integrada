@@ -5,12 +5,22 @@ import AgendaPage from "./pages/AgendaPage";
 import Profissionais from "./pages/Profissionais";
 import Relatorios from "./pages/Relatorios";
 import Notificacoes from "./pages/Notificacoes";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
+  const[isDarkMode, setIsDarkMode] = useState(true);
+
+  const toggleTheme = () =>{
+    setIsDarkMode((prev) => !prev);
+  }
+
+  useEffect(() =>{
+    document.documentElement.classList.toggle("dark-mode", isDarkMode);
+  }, [isDarkMode]);
   return ( 
-    <div id="container" className="dark-mode">
-      <SideBar fullname="Ryan Rocha" />
+    <div id="container" className={isDarkMode ? "dark-mode" : ""}>
+      <SideBar fullname="Ryan Rocha"  isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
       <div className="page-content">
         <Routes>
           <Route path="/" element={<User />} />

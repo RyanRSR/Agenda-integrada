@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-function SideBar({ fullname }) {
+function SideBar({ fullname, isDarkMode, toggleTheme }) {
   const location = useLocation();
 
   const links = [
@@ -27,8 +27,9 @@ function SideBar({ fullname }) {
       <hr />
 
       <div id="side-buttons">
-        <button id="theme">
-          <span className="material-symbols-outlined">dark_mode</span>
+        <button id="theme" onClick={toggleTheme}>
+          <span className="material-symbols-outlined">{isDarkMode ? "light_mode" : "dark_mode" }</span>
+          
         </button>
         <button id="settings">
           <span className="material-symbols-outlined">settings</span>
