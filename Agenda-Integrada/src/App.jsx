@@ -9,18 +9,22 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const[isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
-  const toggleTheme = () =>{
+  const toggleTheme = () => {
     setIsDarkMode((prev) => !prev);
-  }
+  };
 
-  useEffect(() =>{
+  useEffect(() => {
     document.documentElement.classList.toggle("dark-mode", isDarkMode);
   }, [isDarkMode]);
-  return ( 
+  return (
     <div id="container" className={isDarkMode ? "dark-mode" : ""}>
-      <SideBar fullname="Ryan Rocha"  isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
+      <SideBar
+        fullname="Ryan Rocha"
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div className="page-content">
         <Routes>
           <Route path="/" element={<User />} />

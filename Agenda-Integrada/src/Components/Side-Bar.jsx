@@ -28,8 +28,9 @@ function SideBar({ fullname, isDarkMode, toggleTheme }) {
 
       <div id="side-buttons">
         <button id="theme" onClick={toggleTheme}>
-          <span className="material-symbols-outlined">{isDarkMode ? "light_mode" : "dark_mode" }</span>
-          
+          <span className="material-symbols-outlined">
+            {isDarkMode ? "light_mode" : "dark_mode"}
+          </span>
         </button>
         <button id="settings">
           <span className="material-symbols-outlined">settings</span>
