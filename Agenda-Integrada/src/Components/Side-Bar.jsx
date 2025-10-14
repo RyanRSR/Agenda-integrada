@@ -4,8 +4,8 @@ function SideBar({ fullname, isDarkMode, toggleTheme }) {
   const location = useLocation();
 
   const links = [
-    { path: "/", icon: "account_box", label: `${fullname}` },
-    { path: "/agenda", icon: "calendar_month", label: "Agenda" },
+    { path: "/user", icon: "account_box", label: `${fullname}` },
+    { path: "/", icon: "calendar_month", label: "Agenda" },
     { path: "/profissionais", icon: "clinical_notes", label: "Profissionais" },
     { path: "/relatorios", icon: "analytics", label: "Relatórios" },
     { path: "/notificacoes", icon: "notifications", label: "Notificações" },
