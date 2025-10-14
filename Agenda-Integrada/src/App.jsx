@@ -27,8 +27,8 @@ function App() {
       />
       <div className="page-content">
         <Routes>
-          <Route path="/" element={<User />} />
-          <Route path="/agenda" element={<AgendaPage />} />
+          <Route path="/user" element={<User />} />
+          <Route path="/" element={<AgendaPage />} />
           <Route path="/profissionais" element={<Profissionais />} />
           <Route path="/relatorios" element={<Relatorios />} />
           <Route path="/notificacoes" element={<Notificacoes />} />
