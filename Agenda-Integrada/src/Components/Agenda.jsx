@@ -120,7 +120,7 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
                 ${d.isPrevMonth ? "prev-month" : ""}
                 ${isSelected ? "selected" : ""}
                 ${hasAppointment ? "has-appointment" : ""}
-              `}
+                `} 
               onClick={() => handleDayClick(d)}
             >
               <div className="day-number">
