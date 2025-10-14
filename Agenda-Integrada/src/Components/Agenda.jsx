@@ -115,12 +115,11 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
           return (
             <div
               key={index}
-              className={`day
-                ${isToday ? "today" : ""}
-                ${d.isPrevMonth ? "prev-month" : ""}
-                ${isSelected ? "selected" : ""}
-                ${hasAppointment ? "has-appointment" : ""}
-              `}
+              className={`day ${isToday ? "today" : ""} ${
+                d.isPrevMonth ? "prev-month" : ""
+              } ${isSelected ? "selected" : ""} ${
+                hasAppointment ? "has-appointment" : ""
+              }`}
               onClick={() => handleDayClick(d)}
             >
               <div className="day-number">
