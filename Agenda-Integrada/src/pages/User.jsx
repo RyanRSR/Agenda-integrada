@@ -10,19 +10,19 @@ function User() {
   useEffect(() => {
     const savedUser = localStorage.getItem("userData");
     if (savedUser) {
-      setUSer(JSON.parse(savedUser));
+      setUser(JSON.parse(savedUser));
     }
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     const updatedUser = { ...user, [name]: value };
-    setUSer(updatedUser);
+    setUser(updatedUser);
     localStorage.setItem("userData", JSON.stringify(updatedUser));
   };
 
   const handleClear = () => {
-    setUSer({ nome: "", email: "", telefone: "" });
+    setUser({ nome: "", email: "", telefone: "" });
     localStorage.removeItem("userData");
   };
 

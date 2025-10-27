@@ -9,10 +9,18 @@ function ContCent({ name }) {
   const [newAppointment, setNewAppointment] = useState({ title: "", time: "" });
   const [appointments, setAppointments] = useState({});
 
-  // Salvar agendamento
+  // 🔹 Função auxiliar: normaliza a data (zera hora e garante consistência)
+  const normalizeDate = (date) => {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    return d.toLocaleDateString("en-CA");
+  };
+
+  // 🔹 Salvar agendamento
   const handleSaveAppointment = () => {
     if (newAppointment.title.trim() && newAppointment.time) {
-      const dateKey = selectedDate.toISOString().split("T")[0];
+      const dateKey = normalizeDate(selectedDate);
+
       setAppointments((prev) => ({
         ...prev,
         [dateKey]: [...(prev[dateKey] || []), newAppointment],
@@ -23,7 +31,7 @@ function ContCent({ name }) {
     }
   };
 
-  // Abrir modal
+  // 🔹 Abrir modal
   const handleStartNewAppointment = () => {
     if (!selectedDate) {
       alert("Por favor, selecione uma data no calendário.");
@@ -32,27 +40,29 @@ function ContCent({ name }) {
     setIsModalOpen(true);
   };
 
-  // 📅 Encontrar o agendamento mais próximo do dia atual
+  // 🔹 Encontrar o próximo agendamento (incluindo hoje)
   const nextAppointment = useMemo(() => {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     const allDates = Object.keys(appointments);
     if (allDates.length === 0) return null;
 
-    // Filtrar apenas datas futuras ou de hoje
+    // 🔥 Converte corretamente as datas salvas para comparação
     const futureDates = allDates
-      .map((dateKey) => new Date(dateKey))
+      .map((key) => new Date(key + "T00:00:00")) // adiciona hora fixa
       .filter((date) => date >= today)
       .sort((a, b) => a - b);
 
     if (futureDates.length === 0) return null;
 
     const closestDate = futureDates[0];
-    const dateKey = closestDate.toISOString().split("T")[0];
+    const dateKey = closestDate.toLocaleDateString("en-CA");
     const appointmentsOnDate = appointments[dateKey];
 
     if (!appointmentsOnDate || appointmentsOnDate.length === 0) return null;
 
-    // Pega o mais cedo do dia
+    // Pega o horário mais cedo do dia
     const next = [...appointmentsOnDate].sort((a, b) =>
       a.time.localeCompare(b.time)
     )[0];
@@ -75,7 +85,7 @@ function ContCent({ name }) {
         appointments={appointments}
       />
 
-      {/* InfoBox com o próximo agendamento */}
+      {/* 🔹 InfoBox com o próximo agendamento */}
       <div className="info-container">
         {nextAppointment ? (
           <InfoBox
@@ -90,7 +100,7 @@ function ContCent({ name }) {
         )}
       </div>
 
-      {/* Botão de Novo Agendamento */}
+      {/* 🔹 Botão de Novo Agendamento */}
       <div className="agendar">
         <NvAgendamento
           onOpenModal={handleStartNewAppointment}
@@ -98,7 +108,7 @@ function ContCent({ name }) {
         />
       </div>
 
-      {/* Modal de agendamento */}
+      {/* 🔹 Modal de agendamento */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
@@ -121,6 +131,7 @@ function ContCent({ name }) {
                 setNewAppointment({ ...newAppointment, time: e.target.value })
               }
             />
+
             <div className="modal-buttons">
               <button onClick={handleSaveAppointment}>Salvar</button>
               <button onClick={() => setIsModalOpen(false)}>Cancelar</button>

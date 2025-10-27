@@ -213,7 +213,7 @@ div.calendar-grid .day {
   background-size: 50px;
 }
 
-.calendar-grid .day.selected {
+.calendar-grid .day.selected:not(.prev-month) {
   background-color: var(--main-color);
   color: var(--mainc-text);
 }
@@ -619,3 +619,4 @@ main.notificacoes-page {
   font-style: italic;
   color: var(--Stext-color);
 }
+

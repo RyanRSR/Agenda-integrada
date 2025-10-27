@@ -7,6 +7,7 @@ import Relatorios from "./pages/Relatorios";
 import Notificacoes from "./pages/Notificacoes";
 import { useState, useEffect } from "react";
 import "./App.css";
+import "./media.css";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);

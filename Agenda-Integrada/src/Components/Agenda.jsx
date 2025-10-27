@@ -6,18 +6,8 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 
   const monthNames = [
-    "Jan",
-    "Fev",
-    "Mar",
-    "Abr",
-    "Mai",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Set",
-    "Out",
-    "Nov",
-    "Dez",
+    "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+    "Jul", "Ago", "Set", "Out", "Nov", "Dez",
   ];
 
   // Pegar o primeiro dia e quantidade de dias
@@ -56,13 +46,10 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
   };
 
   const handleDayClick = (day) => {
-    if (day.isPrevMonth) return;
+    if (day.isPrevMonth) return; // não permite selecionar dia do mês anterior
     const clickedDate = new Date(currentYear, currentMonth, day.day);
 
-    if (
-      selectedDate &&
-      clickedDate.toDateString() === selectedDate.toDateString()
-    ) {
+    if (selectedDate && clickedDate.toDateString() === selectedDate.toDateString()) {
       onSelectedDate(null);
     } else {
       onSelectedDate(clickedDate);
@@ -98,19 +85,25 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
 
         {/* Dias do calendário */}
         {days.map((d, index) => {
+          // Data real do dia (considerando mês anterior)
+          const dayDate = d.isPrevMonth
+            ? new Date(currentYear, currentMonth - 1, d.day)
+            : new Date(currentYear, currentMonth, d.day);
+
           const isToday =
-            d.day === today.getDate() &&
             !d.isPrevMonth &&
-            currentMonth === today.getMonth() &&
-            currentYear === today.getFullYear();
+            dayDate.getDate() === today.getDate() &&
+            dayDate.getMonth() === today.getMonth() &&
+            dayDate.getFullYear() === today.getFullYear();
 
-          const date = new Date(currentYear, currentMonth, d.day);
           const isSelected =
-            selectedDate && date.toDateString() === selectedDate.toDateString();
+            !d.isPrevMonth &&
+            selectedDate &&
+            dayDate.toDateString() === selectedDate.toDateString();
 
-          const dateKey = date.toISOString().split("T")[0];
+          const dateKey = dayDate.toLocaleDateString("en-CA");
           const hasAppointment =
-            appointments[dateKey] && appointments[dateKey].length > 0;
+            !d.isPrevMonth && appointments[dateKey] && appointments[dateKey].length > 0;
 
           return (
             <div
@@ -120,7 +113,7 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
                 ${d.isPrevMonth ? "prev-month" : ""}
                 ${isSelected ? "selected" : ""}
                 ${hasAppointment ? "has-appointment" : ""}
-                `} 
+              `}
               onClick={() => handleDayClick(d)}
             >
               <div className="day-number">

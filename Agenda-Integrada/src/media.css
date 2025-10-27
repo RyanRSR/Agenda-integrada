@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/*Tablets*/
+@media screen and (min-width:768px) and (max-width:1023px){
+    
+    div.calendar-container{
+        max-width: 90%;
+        max-height: 90%;
+    }    
+
+    
+
+}
