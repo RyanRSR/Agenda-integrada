@@ -6,8 +6,18 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 
   const monthNames = [
-    "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
-    "Jul", "Ago", "Set", "Out", "Nov", "Dez",
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez",
   ];
 
   // Pegar o primeiro dia e quantidade de dias
@@ -49,7 +59,10 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
     if (day.isPrevMonth) return; // não permite selecionar dia do mês anterior
     const clickedDate = new Date(currentYear, currentMonth, day.day);
 
-    if (selectedDate && clickedDate.toDateString() === selectedDate.toDateString()) {
+    if (
+      selectedDate &&
+      clickedDate.toDateString() === selectedDate.toDateString()
+    ) {
       onSelectedDate(null);
     } else {
       onSelectedDate(clickedDate);
@@ -103,7 +116,9 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
 
           const dateKey = dayDate.toLocaleDateString("en-CA");
           const hasAppointment =
-            !d.isPrevMonth && appointments[dateKey] && appointments[dateKey].length > 0;
+            !d.isPrevMonth &&
+            appointments[dateKey] &&
+            appointments[dateKey].length > 0;
 
           return (
             <div
