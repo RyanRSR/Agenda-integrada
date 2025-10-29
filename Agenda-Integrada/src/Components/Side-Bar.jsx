@@ -1,8 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function SideBar({ fullname, isDarkMode, toggleTheme }) {
   const location = useLocation();
-
+  const [isOpen, setIsOpen] = useState(false);
+  const HandleCloseMenu = () =>{setIsOpen(false)};
+  
   const links = [
     { path: "/user", icon: "account_box", label: `${fullname}` },
     { path: "/", icon: "calendar_month", label: "Agenda" },
@@ -12,15 +15,26 @@ function SideBar({ fullname, isDarkMode, toggleTheme }) {
   ];
 
   return (
-    <aside className="side-bar">
+    <>
+    <div className="hb-menu" onClick={() => !setIsOpen(!isOpen)}>
+      <span className="material-symbols-outlined">menu</span>
+    </div>
+
+    <aside className={`side-bar ${isOpen ? "open" : ""}`}>
+     
+
       {links.map((item) => (
         <Link
           key={item.label}
           to={item.path}
           className={location.pathname === item.path ? "active" : ""}
+          onClick={HandleCloseMenu}
         >
           <span className="material-symbols-outlined">{item.icon}</span>
           <span className="label">{item.label}</span>
+          
+
+
         </Link>
       ))}
 
@@ -40,6 +54,7 @@ function SideBar({ fullname, isDarkMode, toggleTheme }) {
         </button>
       </div>
     </aside>
+      </>
   );
 }
 

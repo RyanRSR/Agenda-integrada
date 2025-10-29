@@ -59,6 +59,18 @@ div#container {
   justify-content: space-between;
 }
 
+.hb-menu{
+  color: var(--text-color);
+  position: fixed;
+  top: 1rem;
+  left:1rem;
+  background-color: var(--itens-color);
+}
+.hb-menu span{
+  font-size:40px;
+  color: var(--text-color);
+  cursor: pointer;
+}
 .side-bar a {
   display: flex;
   align-items: center;

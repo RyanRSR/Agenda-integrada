@@ -1,13 +1,20 @@
 @charset "utf-8";
 
-/*Tablets*/
-@media screen and (min-width:768px) and (max-width:1023px){
+/*Celulares*/
+@media screen and (max-width: 767px) {
     
-    div.calendar-container{
-        max-width: 90%;
-        max-height: 90%;
-    }    
+    body {
+        font-size: 14px;
+    }
+
+    #container {
+        padding: 10px;
+        display: flex;
+    }
+    
+    .side-bar{
+        display: none;
+    }
 
     
-
 }
