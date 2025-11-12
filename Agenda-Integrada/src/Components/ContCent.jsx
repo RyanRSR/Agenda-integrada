@@ -3,8 +3,7 @@ import Agenda from "./Agenda";
 import InfoBox from "./InfoBox";
 import NvAgendamento from "./NvAgendamento";
 
-function ContCent({ name }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function ContCent({ name, setIsModalOpen, isModalOpen }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [newAppointment, setNewAppointment] = useState({ title: "", time: "" });
   const [appointments, setAppointments] = useState({});
@@ -31,13 +30,22 @@ function ContCent({ name }) {
     }
   };
 
-  // 🔹 Abrir modal
+  // Novo agendamento Desktop
   const handleStartNewAppointment = () => {
     if (!selectedDate) {
       alert("Por favor, selecione uma data no calendário.");
       return;
     }
     setIsModalOpen(true);
+  };
+
+  // Quando o usuario selecionar uma data no calendário
+  const handleSelectedDate = (date) => {
+    setSelectedDate(date);
+    //Se for mobile, abrir modal
+    if (window.innerWidth <= 767 && date) {
+      setIsModalOpen(true);
+    }
   };
 
   // 🔹 Encontrar o próximo agendamento (incluindo hoje)
@@ -81,7 +89,7 @@ function ContCent({ name }) {
 
       <Agenda
         selectedDate={selectedDate}
-        onSelectedDate={setSelectedDate}
+        onSelectedDate={handleSelectedDate}
         appointments={appointments}
       />
 

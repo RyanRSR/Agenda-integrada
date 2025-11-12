@@ -11,7 +11,7 @@ import "./media.css";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev);
   };
@@ -25,11 +25,20 @@ function App() {
         fullname="Ryan Rocha"
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
+        isModalOpen={isModalOpen}
       />
       <div className="page-content">
         <Routes>
           <Route path="/user" element={<User />} />
-          <Route path="/" element={<AgendaPage />} />
+          <Route
+            path="/"
+            element={
+              <AgendaPage
+                setIsModalOpen={setIsModalOpen}
+                isModalOpen={isModalOpen}
+              />
+            }
+          />
           <Route path="/profissionais" element={<Profissionais />} />
           <Route path="/relatorios" element={<Relatorios />} />
           <Route path="/notificacoes" element={<Notificacoes />} />

@@ -2,19 +2,73 @@
 
 /*Celulares*/
 @media screen and (max-width: 767px) {
-    
-    body {
-        font-size: 14px;
-    }
+  div#container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
 
-    #container {
-        padding: 10px;
-        display: flex;
-    }
-    
-    .side-bar{
-        display: none;
-    }
+  /*Side- bar*/
+  .side-bar {
+    display: none;
+  }
 
-    
+  .hb-menu {
+    display: block;
+  }
+
+  /*Pagina Agenda*/
+  main.agenda-page {
+    margin-left: 0;
+    padding: 60px 20px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .agendar-btn,
+  .agendar-msg {
+    display: none;
+  }
+  /*agenda*/
+
+  div.calendar-container {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  div.calendar-grid {
+    gap: 6px;
+    font-size: 1.2em;
+  }
+
+  div.calendar-grid .day {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  /*infobox*/
+  .info-container {
+    width: 100%;
+    align-items: center;
+  }
+  .info {
+    width: 90%;
+    text-align: center;
+  }
+
+  /*modal*/
+  .modal {
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 350px;
+  }
+  .hb-menu.modal {
+    display: none;
+  }
 }
