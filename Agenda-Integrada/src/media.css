@@ -9,25 +9,41 @@
     height: auto;
   }
 
+  /*header*/
+  header h1{
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 1rem 0;
+    line-height: 1.2;
+  }
+
   /*Side- bar*/
   .side-bar {
-    display: none;
+    position: fixed;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 70%;
+   max-width: 300px;
+   z-index: 1000;
+
+   display: flex;
+   flex-direction: column;
+   transform: translateX(-100%);
+   transition: transform 0.3s ease;
+  
+   pointer-events: none;
+  }
+
+
+  .side-bar.open{
+    transform: translateX(0);
+    pointer-events: auto  ;
+   
   }
 
   .hb-menu {
     display: block;
-  }
-
-  .side-bar.open{
-    display: flex !important;
-    position: fixed;
-    z-index: 1000;
-    height: 100%;
-    width: 70%;
-    max-width: 300px;
-    top: 0;
-    left: 0;
-   
   }
 
 .hb-menu {
@@ -55,10 +71,20 @@
   /*agenda*/
 
   div.calendar-container {
-    max-width: 100%;
-    height: auto;
-    padding: 10px;
+    max-width: 92%;
+    margin:0 auto;
+    padding: 1.2rem;
   }
+
+  .calendar-header{
+    gap: 0.5rem;
+
+  }
+
+  .calendar-header h2{
+    font-size: 1.5em;
+  }
+
   div.calendar-grid {
     gap: 6px;
     font-size: 1.2em;
@@ -72,6 +98,7 @@
 
   /*infobox*/
   .info-container {
+    margin-top: 1.5rem;
     width: 100%;
     align-items: center;
   }
