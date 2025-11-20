@@ -1,86 +1,122 @@
 @charset "utf-8";
 
-/*Celulares*/
 @media screen and (max-width: 767px) {
   div#container {
-    display: flex;
-    flex-direction: column;
+    display: block;
     width: 100%;
     height: auto;
   }
 
-  /*Side- bar*/
+  header h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 1rem 0;
+    line-height: 1.2;
+  }
+
   .side-bar {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+    max-width: 500px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .side-bar.open {
+    transform: translateX(0);
+    pointer-events: auto;
   }
 
   .hb-menu {
     display: block;
   }
 
-  .side-bar.open{
-    display: flex !important;
+  .hb-menu {
+    display: block;
     position: fixed;
-    z-index: 1000;
-    height: 100%;
-    width: 70%;
-    max-width: 300px;
-    top: 0;
-    left: 0;
-   
+    top: 1rem;
+    left: 1rem;
+    z-index: 2000;
+    cursor: pointer;
   }
 
-.hb-menu {
-  display: block;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 2000; /* acima da sidebar */
-  cursor: pointer;
-}
- 
+  .sidebar-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 900;
+  }
 
-  /*Pagina Agenda*/
+  .sidebar-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
   main.agenda-page {
-    margin-left: 0;
-    padding: 60px 20px 20px;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
+    gap: 20px;
   }
 
   .agendar-btn,
   .agendar-msg {
     display: none;
   }
-  /*agenda*/
 
   div.calendar-container {
-    max-width: 100%;
-    height: auto;
-    padding: 10px;
+    max-width: 92%;
+    margin: 0 auto;
+    padding: 1.2rem;
   }
+
+  .calendar-header {
+    gap: 0.5rem;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.5em;
+  }
+
   div.calendar-grid {
     gap: 6px;
     font-size: 1.2em;
   }
 
   div.calendar-grid .day {
-    width: 38px;
-    height: 38px;
-    font-size: 20px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
   }
 
-  /*infobox*/
   .info-container {
+    grid-column: auto !important;
     width: 100%;
-    align-items: center;
+    display: flex;
+    justify-content: center;
   }
+
   .info {
     width: 90%;
+    margin-inline: auto;
     text-align: center;
   }
 
-  /*modal*/
+  .info-box-title {
+    text-align: center;
+  }
+
   .modal {
     align-items: flex-start;
     padding-top: 10vh;
@@ -90,7 +126,92 @@
     width: 90%;
     max-width: 350px;
   }
+
   .hb-menu.modal {
     display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  div#container {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  main.agenda-page {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+  }
+
+  .calendar-container {
+    grid-column: 1 / 2;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .info-container {
+    grid-column: 2 / 3 !important;
+    display: flex;
+    width: 100%;
+  }
+
+  .info {
+    width: 90%;
+    max-width: 380px;
+    text-align: left;
+  }
+
+  .side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60%;
+    max-width: 260px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .side-bar.open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .hb-menu {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    left: 0.7rem;
+    z-index: 2000;
+    cursor: pointer;
+  }
+
+  .sidebar-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 900;
+  }
+
+  .sidebar-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  body,
+  html {
+    overflow-x: hidden !important;
   }
 }

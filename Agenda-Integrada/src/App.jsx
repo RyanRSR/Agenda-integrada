@@ -12,6 +12,7 @@ import "./media.css";
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev);
   };
@@ -25,8 +26,14 @@ function App() {
         fullname="Ryan Rocha"
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
-        isModalOpen={isModalOpen}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
+    <div
+    className={`sidebar-overlay ${isSidebarOpen ? 'show' : ""}`}
+      onClick={() => setIsSidebarOpen(false)}
+    ></div>
+
       <div className="page-content">
         <Routes>
           <Route path="/user" element={<User />} />
