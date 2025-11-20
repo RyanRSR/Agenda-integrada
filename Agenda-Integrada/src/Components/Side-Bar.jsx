@@ -1,12 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-function SideBar({ fullname, isDarkMode, toggleTheme, isModalOpen }) {
+function SideBar({ fullname, isDarkMode, toggleTheme, isSidebarOpen, setIsSidebarOpen }) {
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
-  const HandleCloseMenu = () => {
-    setIsOpen(false);
-  };
+  
 
   const links = [
     { path: "/user", icon: "account_box", label: `${fullname}` },
@@ -18,19 +15,23 @@ function SideBar({ fullname, isDarkMode, toggleTheme, isModalOpen }) {
 
   return (
     <>
-      {!isModalOpen && (
-        <div className="hb-menu" onClick={() => setIsOpen(!isOpen)}>
+
+
+
+      {!isSidebarOpen && (
+        <div className="hb-menu" onClick={() => setIsSidebarOpen(true)}>
           <span className="material-symbols-outlined">menu</span>
         </div>
       )}
 
-      <aside className={`side-bar ${isOpen ? "open" : ""}`}>
+
+      <aside className={`side-bar ${isSidebarOpen ? "open" : ""}`}>
         {links.map((item) => (
           <Link
             key={item.label}
             to={item.path}
             className={location.pathname === item.path ? "active" : ""}
-            onClick={HandleCloseMenu}
+            onClick={() => setIsSidebarOpen(false)}
           >
             <span className="material-symbols-outlined">{item.icon}</span>
             <span className="label">{item.label}</span>
