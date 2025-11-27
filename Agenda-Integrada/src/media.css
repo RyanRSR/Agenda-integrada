@@ -7,11 +7,18 @@
     height: auto;
   }
 
+  header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top:3.2rem;
+  }
+
   header h1 {
     font-size: 1.6rem;
-    text-align: center;
-    margin: 1rem 0;
     line-height: 1.2;
+    text-align: center;
+    width: 100%;
   }
 
   .side-bar {
@@ -77,6 +84,7 @@
 
   div.calendar-container {
     max-width: 92%;
+    max-width: 370px;
     margin: 0 auto;
     padding: 1.2rem;
   }
@@ -90,7 +98,7 @@
   }
 
   div.calendar-grid {
-    gap: 6px;
+    gap: 4px;
     font-size: 1.2em;
   }
 
