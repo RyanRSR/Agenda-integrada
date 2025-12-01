@@ -4,6 +4,17 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  max-width: 100%;
+}
+
+html, body {
+  overflow-x: hidden !important;
+  
+}
+
+h1,h2,h3,p,span{
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 :root {
@@ -164,11 +175,9 @@ div.calendar-container {
 
 div.calendar-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  margin-top: 15px;
-  margin-left: 20px;
+  gap: 8px;
 }
 
 .calendar-header h2 {
@@ -177,6 +186,8 @@ div.calendar-header {
   color: var(--text-color);
   font-size: 24px;
 }
+
+
 
 .calendar-header button {
   all: unset;
@@ -642,3 +653,5 @@ main.notificacoes-page {
   font-style: italic;
   color: var(--Stext-color);
 }
+
+

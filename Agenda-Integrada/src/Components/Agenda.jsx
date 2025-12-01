@@ -73,13 +73,13 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
     <div className="calendar-container">
       {/* Cabeçalho */}
       <div className="calendar-header">
-        <h2>Agendamentos</h2>
+        <h2 className="calendar-title">Agendamentos</h2>
 
         <button onClick={() => changeMonth(-1)}>
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
 
-        <h2>
+        <h2 className="date-label">
           {monthNames[currentMonth]} {currentYear}
         </h2>
 
