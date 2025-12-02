@@ -46,7 +46,6 @@
     pointer-events: auto;
   }
 
-
   .hb-menu {
     display: block;
     position: fixed;
@@ -264,76 +263,74 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
- div#container {
-    display:block;
+  div#container {
+    display: block;
     width: 100%;
     height: auto;
-
-  }
-  
-  main.agenda-page{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
   }
 
-  header{
+  main.agenda-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  header {
     display: flex;
     justify-content: center;
     padding-top: 2rem;
   }
 
-  header h1{
-    font-size:2.5rem;
-    line-height:1.2;
-    text-align:center;
+  header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    text-align: center;
   }
 
-  .side-bar{
+  .side-bar {
     position: fixed;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     height: 100%;
     width: 50%;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    transform:translateX(-100%);
+    transform: translateX(-100%);
     transition: transform 0.3s ease;
     pointer-events: none;
   }
 
-  .side-bar span
-  {
+  .side-bar span {
     font-size: 2rem;
   }
-  .side-bar span.material-symbols-outlined{
+  .side-bar span.material-symbols-outlined {
     font-size: 2.5rem;
   }
 
-  #side-buttons span.material-symbols-outlined{
+  #side-buttons span.material-symbols-outlined {
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-  .side-bar.open{
-    transform:translateX(0);
+  .side-bar.open {
+    transform: translateX(0);
     pointer-events: auto;
   }
-  .hb-menu{
+  .hb-menu {
     display: block;
     position: fixed;
-    top:0.5rem; 
-    left:0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
     z-index: 2000;
     cursor: pointer;
   }
 
-  .hb-menu span{
+  .hb-menu span {
     font-size: 2.6rem;
     color: var(--text-color);
   }
 
-  .sidebar-overlay{
+  .sidebar-overlay {
     display: block;
     position: fixed;
     inset: 0;
@@ -345,32 +342,27 @@
     z-index: 900;
   }
 
-  .sidebar-overlay.show{
-    opacity:1;
+  .sidebar-overlay.show {
+    opacity: 1;
     pointer-events: all;
   }
 
-  .calendar-header h2{
+  .calendar-header h2 {
     font-size: 2.2rem;
   }
 
-
-  .calendar-container{
-
-    max-width: 100%!important;
-    
+  .calendar-container {
+    max-width: 100% !important;
   }
 
-
-  .info-container h2{
+  .info-container h2 {
     font-size: 2rem;
-    
   }
-  .info-container .info{
+  .info-container .info {
     font-size: 1.5rem;
   }
 
-  .agendar{
+  .agendar {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -379,7 +371,7 @@
     align-self: center;
   }
 
-  .agendar-container{
+  .agendar-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -387,15 +379,12 @@
     align-items: center;
   }
 
-  .agendar-btn{
+  .agendar-btn {
     font-size: 2rem;
     width: 100%;
-  } 
-
-  .agendar-msg{
-    font-size: 1..5rem;
   }
 
-
-
+  .agendar-msg {
+    font-size: 1.5rem;
+  }
 }
