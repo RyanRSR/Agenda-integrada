@@ -4,11 +4,11 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  max-width: 100%;
+  
 }
 
 html, body {
-  overflow-x: hidden !important;
+  overflow-x: hidden ;
   
 }
 

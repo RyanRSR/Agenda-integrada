@@ -1,7 +1,8 @@
 @charset "utf-8";
 
 @media screen and (max-width: 767px) {
-  html,body{
+  html,
+  body {
     overflow: hidden !important;
   }
 
@@ -11,11 +12,11 @@
     height: auto;
   }
 
-  header{
+  header {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-top:3rem;
+    padding-top: 3rem;
   }
 
   header h1 {
@@ -45,14 +46,11 @@
     pointer-events: auto;
   }
 
-  .hb-menu {
-    display: block;
-  }
 
   .hb-menu {
     display: block;
     position: fixed;
-    top: 0,5rem;
+    top: 0, 5rem;
     left: 0.5rem;
     z-index: 2000;
     cursor: pointer;
@@ -80,13 +78,11 @@
     pointer-events: all;
   }
 
-  .calendar-header{
+  .calendar-header {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     width: 50%;
-    
-    
   }
 
   .calendar-header h2 {
@@ -95,9 +91,9 @@
     text-align: center;
   }
 
-  .calendar-header h2.date-label{
+  .calendar-header h2.date-label {
     word-break: keep-all;
-    white-space: normal ;
+    white-space: normal;
   }
 
   main.agenda-page {
@@ -128,7 +124,7 @@
 
   div.calendar-grid {
     grid-template-columns: repeat(7, minmax(0, 1fr));
-  justify-items: center;
+    justify-items: center;
   }
 
   div.calendar-grid .day {
@@ -169,7 +165,25 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1280px) and (orientation: landscape) {
+  body,
+  html {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  header {
+    grid-column: 1/-1;
+    grid-row: auto;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+  }
+
   div#container {
     display: block;
     width: 100%;
@@ -178,15 +192,16 @@
 
   main.agenda-page {
     display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 20px;
+    height: 100%;
+    align-items: stretch;
   }
 
   .calendar-container {
     grid-column: 1 / 2;
-    max-width: 90%;
-    margin: 0 auto;
+    max-width: 100%;
+    max-height: auto;
   }
 
   .info-container {
@@ -196,7 +211,7 @@
   }
 
   .info {
-    width: 90%;
+    width: 100%;
     max-width: 380px;
     text-align: left;
   }
@@ -246,9 +261,141 @@
     opacity: 1;
     pointer-events: all;
   }
+}
 
-  body,
-  html {
-    overflow-x: hidden !important;
+@media screen and (min-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
+ div#container {
+    display:block;
+    width: 100%;
+    height: auto;
+
   }
+  
+  main.agenda-page{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  header{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
+
+  header h1{
+    font-size:2.5rem;
+    line-height:1.2;
+    text-align:center;
+  }
+
+  .side-bar{
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 50%;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transform:translateX(-100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
+
+  .side-bar span
+  {
+    font-size: 2rem;
+  }
+  .side-bar span.material-symbols-outlined{
+    font-size: 2.5rem;
+  }
+
+  #side-buttons span.material-symbols-outlined{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .side-bar.open{
+    transform:translateX(0);
+    pointer-events: auto;
+  }
+  .hb-menu{
+    display: block;
+    position: fixed;
+    top:0.5rem; 
+    left:0.5rem;
+    z-index: 2000;
+    cursor: pointer;
+  }
+
+  .hb-menu span{
+    font-size: 2.6rem;
+    color: var(--text-color);
+  }
+
+  .sidebar-overlay{
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 900;
+  }
+
+  .sidebar-overlay.show{
+    opacity:1;
+    pointer-events: all;
+  }
+
+  .calendar-header h2{
+    font-size: 2.2rem;
+  }
+
+
+  .calendar-container{
+
+    max-width: 100%!important;
+    
+  }
+
+
+  .info-container h2{
+    font-size: 2rem;
+    
+  }
+  .info-container .info{
+    font-size: 1.5rem;
+  }
+
+  .agendar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-self: center;
+  }
+
+  .agendar-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .agendar-btn{
+    font-size: 2rem;
+    width: 100%;
+  } 
+
+  .agendar-msg{
+    font-size: 1..5rem;
+  }
+
+
+
 }
