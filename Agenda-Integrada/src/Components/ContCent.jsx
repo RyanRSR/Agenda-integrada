@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Agenda from "./Agenda";
 import InfoBox from "./InfoBox";
 import NvAgendamento from "./NvAgendamento";
@@ -7,18 +7,33 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [newAppointment, setNewAppointment] = useState({ title: "", time: "" });
   const [appointments, setAppointments] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  // 🔹 Função auxiliar: normaliza a data (zera hora e garante consistência)
+  // Carrega agendamentos
+  useEffect(() => {
+    const saved = localStorage.getItem("appointments");
+    if (saved) {
+      setAppointments(JSON.parse(saved));
+    }
+    setLoading(false);
+  }, []);
+
+  // Salva agendamentos
+  useEffect(() => {
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+  }, [appointments]);
+
+  // Normaliza a data
   const normalizeDate = (date) => {
     const d = new Date(date);
     d.setHours(0, 0, 0, 0);
     return d.toLocaleDateString("en-CA");
   };
 
-  // 🔹 Salvar agendamento
+  // Salvar agendamento
   const handleSaveAppointment = () => {
     if (newAppointment.title.trim() && newAppointment.time) {
-      const dateKey = normalizeDate(selectedDate);
+     const dateKey = selectedDate;
 
       setAppointments((prev) => ({
         ...prev,
@@ -30,7 +45,7 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
     }
   };
 
-  // Novo agendamento Desktop
+  // Abrir modal no desktop
   const handleStartNewAppointment = () => {
     if (!selectedDate) {
       alert("Por favor, selecione uma data no calendário.");
@@ -39,16 +54,28 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
     setIsModalOpen(true);
   };
 
-  // Quando o usuario selecionar uma data no calendário
+  // Selecionar data corretamente
   const handleSelectedDate = (date) => {
-    setSelectedDate(date);
-    //Se for mobile, abrir modal
-    if (window.innerWidth <= 767 && date) {
-      setIsModalOpen(true);
-    }
-  };
+  if (!date) {
+    setSelectedDate(null);
+    return;
+  }
 
-  // 🔹 Encontrar o próximo agendamento (incluindo hoje)
+  const normalized = normalizeDate(date);
+
+  if (selectedDate === normalized) {
+    setSelectedDate(null);
+    return;
+  }
+
+  setSelectedDate(normalized);
+
+  if (window.innerWidth <= 767) {
+    setIsModalOpen(true);
+  }
+};
+
+  // Próximo agendamento
   const nextAppointment = useMemo(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -56,9 +83,8 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
     const allDates = Object.keys(appointments);
     if (allDates.length === 0) return null;
 
-    // 🔥 Converte corretamente as datas salvas para comparação
     const futureDates = allDates
-      .map((key) => new Date(key + "T00:00:00")) // adiciona hora fixa
+      .map((key) => new Date(key + "T00:00:00"))
       .filter((date) => date >= today)
       .sort((a, b) => a - b);
 
@@ -70,7 +96,6 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
 
     if (!appointmentsOnDate || appointmentsOnDate.length === 0) return null;
 
-    // Pega o horário mais cedo do dia
     const next = [...appointmentsOnDate].sort((a, b) =>
       a.time.localeCompare(b.time)
     )[0];
@@ -80,6 +105,10 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
       ...next,
     };
   }, [appointments]);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <main className="agenda-page">
@@ -93,7 +122,6 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
         appointments={appointments}
       />
 
-      {/* 🔹 InfoBox com o próximo agendamento */}
       <div className="info-container">
         {nextAppointment ? (
           <InfoBox
@@ -108,7 +136,6 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
         )}
       </div>
 
-      {/* 🔹 Botão de Novo Agendamento */}
       <div className="agendar">
         <NvAgendamento
           onOpenModal={handleStartNewAppointment}
@@ -116,12 +143,11 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
         />
       </div>
 
-      {/* 🔹 Modal de agendamento */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
             <h3>
-              Novo Agendamento em {selectedDate?.toLocaleDateString("pt-BR")}
+             Novo Agendamento em {selectedDate && new Date(selectedDate).toLocaleDateString("pt-BR")}
             </h3>
 
             <input

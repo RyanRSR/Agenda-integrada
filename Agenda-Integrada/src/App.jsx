@@ -29,10 +29,10 @@ function App() {
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
       />
-    <div
-    className={`sidebar-overlay ${isSidebarOpen ? 'show' : ""}`}
-      onClick={() => setIsSidebarOpen(false)}
-    ></div>
+      <div
+        className={`sidebar-overlay ${isSidebarOpen ? "show" : ""}`}
+        onClick={() => setIsSidebarOpen(false)}
+      ></div>
 
       <div className="page-content">
         <Routes>
