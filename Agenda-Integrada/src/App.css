@@ -184,10 +184,15 @@ div.calendar-header {
 }
 
 .calendar-header h2 {
-  flex-grow: 1;
-  text-align: center;
+  padding: 1.2rem;
   color: var(--text-color);
-  font-size: 24px;
+  font-size: 2.2rem;
+}
+
+.calendar-header .time-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendar-header button {

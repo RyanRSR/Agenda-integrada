@@ -6,8 +6,18 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
 
   const monthNames = [
-    "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
-    "Jul", "Ago", "Set", "Out", "Nov", "Dez",
+    "Jan",
+    "Fev",
+    "Mar",
+    "Abr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Set",
+    "Out",
+    "Nov",
+    "Dez",
   ];
 
   const normalizeDate = (date) => {
@@ -57,19 +67,22 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
   return (
     <div className="calendar-container">
       <div className="calendar-header">
-        <h2 className="calendar-title">Agendamentos</h2>
+        <div>
+          <h2 className="calendar-title">Agendamentos</h2>
+        </div>
+        <div className="time-zone">
+          <button onClick={() => changeMonth(-1)}>
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
 
-        <button onClick={() => changeMonth(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
-        </button>
+          <h2 className="date-label">
+            {monthNames[currentMonth]} {currentYear}
+          </h2>
 
-        <h2 className="date-label">
-          {monthNames[currentMonth]} {currentYear}
-        </h2>
-
-        <button onClick={() => changeMonth(1)}>
-          <span className="material-symbols-outlined">arrow_forward</span>
-        </button>
+          <button onClick={() => changeMonth(1)}>
+            <span className="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
       </div>
 
       <div className="calendar-grid">
@@ -85,8 +98,7 @@ function Agenda({ onSelectedDate, selectedDate, appointments }) {
             : new Date(currentYear, currentMonth, d.day);
 
           const isToday =
-            !d.isPrevMonth &&
-            dayDate.toDateString() === today.toDateString();
+            !d.isPrevMonth && dayDate.toDateString() === today.toDateString();
 
           const dateKey = normalizeDate(dayDate);
 

@@ -33,7 +33,7 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
   // Salvar agendamento
   const handleSaveAppointment = () => {
     if (newAppointment.title.trim() && newAppointment.time) {
-     const dateKey = selectedDate;
+      const dateKey = selectedDate;
 
       setAppointments((prev) => ({
         ...prev,
@@ -56,24 +56,24 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
 
   // Selecionar data corretamente
   const handleSelectedDate = (date) => {
-  if (!date) {
-    setSelectedDate(null);
-    return;
-  }
+    if (!date) {
+      setSelectedDate(null);
+      return;
+    }
 
-  const normalized = normalizeDate(date);
+    const normalized = normalizeDate(date);
 
-  if (selectedDate === normalized) {
-    setSelectedDate(null);
-    return;
-  }
+    if (selectedDate === normalized) {
+      setSelectedDate(null);
+      return;
+    }
 
-  setSelectedDate(normalized);
+    setSelectedDate(normalized);
 
-  if (window.innerWidth <= 767) {
-    setIsModalOpen(true);
-  }
-};
+    if (window.innerWidth <= 767) {
+      setIsModalOpen(true);
+    }
+  };
 
   // Próximo agendamento
   const nextAppointment = useMemo(() => {
@@ -147,7 +147,9 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
         <div className="modal">
           <div className="modal-content">
             <h3>
-             Novo Agendamento em {selectedDate && new Date(selectedDate).toLocaleDateString("pt-BR")}
+              Novo Agendamento em{" "}
+              {selectedDate &&
+                new Date(selectedDate).toLocaleDateString("pt-BR")}
             </h3>
 
             <input

@@ -78,10 +78,9 @@
   }
 
   .calendar-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .calendar-header h2 {
@@ -90,9 +89,20 @@
     text-align: center;
   }
 
+  .calendar-header h2.calendar-title {
+    font-size: 1.2rem;
+  }
+
+  .calendar-header .time-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .calendar-header h2.date-label {
     word-break: keep-all;
     white-space: normal;
+    font-size: 1.2rem;
   }
 
   main.agenda-page {
@@ -195,6 +205,17 @@
     gap: 20px;
     height: 100%;
     align-items: stretch;
+  }
+
+  .calendar-header h2 {
+    font-size: 2.2rem;
+    padding: 1.2rem;
+  }
+
+  .calendar-header .time-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .calendar-container {
@@ -349,6 +370,13 @@
 
   .calendar-header h2 {
     font-size: 2.2rem;
+    padding: 1.2rem;
+  }
+
+  .calendar-header .time-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .calendar-container {
