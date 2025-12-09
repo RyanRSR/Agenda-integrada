@@ -12,6 +12,7 @@ O usuário pode visualizar um calendário dinâmico, criar agendamentos, consult
 - JavaScript
 - HTML
 - CSS
+
 ---
 
 ## Funções
@@ -25,7 +26,9 @@ O usuário pode visualizar um calendário dinâmico, criar agendamentos, consult
 ---
 
 ## Estrutura
+
 ---
+
 ```
 Agenda-Integrada/
   ├── .vercel/
@@ -59,6 +62,7 @@ Agenda-Integrada/
   ├── vite.config.js
   └── README.md
 ```
+
 ---
 
 ## 🚧 Melhorias Futuras
@@ -74,17 +78,12 @@ Agenda-Integrada/
 
 ## 📦 Como Rodar o Projeto
 
-git clone https://github.com/RyanRSR/Agenda-integrada.git
----
+## git clone https://github.com/RyanRSR/Agenda-integrada.git
 
 ## 🚀 Demonstração
 
-🔗 **Deploy no Vercel:** https://agenda-integrada.vercel.app/
+## 🔗 **Deploy no Vercel:** https://agenda-integrada.vercel.app/
 
-## ✍️ Autor
-
-    Ryan Rocha
-    Desenvolvedor Web • Estudante de Engenharia da Computação
 ## ✍️ Autor
 
 - **Ryan Rocha**
