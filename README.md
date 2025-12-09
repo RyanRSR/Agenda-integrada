@@ -78,11 +78,11 @@ Agenda-Integrada/
 
 ## 📦 Como Rodar o Projeto
 
-## git clone https://github.com/RyanRSR/Agenda-integrada.git
+ git clone https://github.com/RyanRSR/Agenda-integrada.git
 
 ## 🚀 Demonstração
 
-## 🔗 **Deploy no Vercel:** https://agenda-integrada.vercel.app/
+ 🔗 **Deploy no Vercel:** https://agenda-integrada.vercel.app/
 
 ## ✍️ Autor
 
