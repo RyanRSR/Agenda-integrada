@@ -25,7 +25,7 @@ O usuário pode visualizar um calendário dinâmico, criar agendamentos, consult
 ---
 
 ## Estrutura
-
+---
 Agenda-Integrada/
   ├── .vercel/
   │   ├── project.json
