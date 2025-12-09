@@ -9,7 +9,7 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
   const [appointments, setAppointments] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // Carrega agendamentos
+  // Carrega agendamentos ao iniciar
   useEffect(() => {
     const saved = localStorage.getItem("appointments");
     if (saved) {
@@ -18,7 +18,7 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
     setLoading(false);
   }, []);
 
-  // Salva agendamentos
+  // Salva agendamentos quando appointments é alterado
   useEffect(() => {
     localStorage.setItem("appointments", JSON.stringify(appointments));
   }, [appointments]);
@@ -30,7 +30,7 @@ function ContCent({ name, setIsModalOpen, isModalOpen }) {
     return d.toLocaleDateString("en-CA");
   };
 
-  // Salvar agendamento
+  // Salvar agendamento dentro do modal e envia para o Infobox
   const handleSaveAppointment = () => {
     if (newAppointment.title.trim() && newAppointment.time) {
       const dateKey = selectedDate;
